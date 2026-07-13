@@ -1,0 +1,35 @@
+<?xml version="1.0"?>
+<launch>
+
+    <!-- 包路径 -->
+    <arg name="use_sim" default="false"/>
+
+    <!-- robot_description -->
+    <let name="robot_description"
+         value="$(command 'xacro $(find-pkg-share description_lerobot)/urdf/so_arm_100_5dof.urdf.xacro use_sim:=$(var use_sim)')" />
+
+    <!-- robot_state_publisher -->
+    <node
+        pkg="robot_state_publisher"
+        exec="robot_state_publisher"
+        output="screen">
+
+        <param
+            name="robot_description"
+            value="$(var robot_description)" />
+    </node>
+
+    <!-- joint_state_publisher -->
+    <node
+        pkg="joint_state_publisher"
+        exec="joint_state_publisher"
+        output="screen" />
+
+    <!-- rviz -->
+    <node
+        pkg="rviz2"
+        exec="rviz2"
+        output="screen"
+        args="-d $(find-pkg-share description_lerobot)/rviz/lerobot_rviz.rviz" />
+
+</launch>
