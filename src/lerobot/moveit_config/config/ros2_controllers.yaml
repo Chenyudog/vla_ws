@@ -3,13 +3,14 @@ controller_manager:
   ros__parameters:
     update_rate: 100  # Hz
 
+    hardware_interface:
+      type: gazebo_ros2_control/GazeboSystem
+      
     lerobot_group_controller:
       type: joint_trajectory_controller/JointTrajectoryController
 
-
     lerobot_gripper_controller:
       type: joint_trajectory_controller/JointTrajectoryController
-
 
     joint_state_broadcaster:
       type: joint_state_broadcaster/JointStateBroadcaster
@@ -23,10 +24,11 @@ lerobot_group_controller:
       - Wrist_Pitch
     command_interfaces:
       - position
-      - velocity
+
     state_interfaces:
       - position
       - velocity
+
 lerobot_gripper_controller:
   ros__parameters:
     joints:
@@ -34,7 +36,7 @@ lerobot_gripper_controller:
       - Gripper
     command_interfaces:
       - position
-      - velocity
+
     state_interfaces:
       - position
       - velocity
