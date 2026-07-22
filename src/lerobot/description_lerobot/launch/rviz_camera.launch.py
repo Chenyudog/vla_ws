@@ -6,7 +6,7 @@ from ament_index_python.packages import get_package_share_directory
 def generate_launch_description():
     # 获取包共享路径
     pkg_dir = get_package_share_directory('description_lerobot')
-    urdf_path = os.path.join(pkg_dir, "urdf", "lerobot_camera.urdf")
+    urdf_path = os.path.join(pkg_dir, "urdf", "rviz_lerobot_camera.urdf")
     rviz_cfg_path = os.path.join(pkg_dir, "rviz", "lerobot_rviz.rviz")
 
     # 读取urdf文件完整文本

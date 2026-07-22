@@ -1,45 +1,14 @@
-<?xml version="1.0"?>
 <robot name="so_arm_100_5dof">
-  <material name="brightyellow">
-    <color rgba="1.0 0.9921568627450981 0.00392156862745098 1.0"/>
-  </material>
-  <material name="blue">
-    <color rgba="0 0 1 1"/>
-  </material>
-  <material name="red">
-    <color rgba="1.0 0.0 0.0 1"/>
-  </material>
-
-  <link name="world">
-  </link>
-
   <link name="base_link">
-    <inertial>
-      <mass value="0.1"/>
-      <origin rpy="0 0 0" xyz="0 0 0.1"/>
-      <inertia ixx="0.002" iyy="0.002" izz="0.002" ixy="0" ixz="0" iyz="0"/>
-    </inertial>
-    <visual>
-      <origin rpy="0 0 0" xyz="0 0 0.1"/>
-      <geometry>
-        <box size="0.12 0.12 0.06"/>
-      </geometry>
-      <material name="brightyellow"/>
-    </visual>
-    <collision>
-      <origin rpy="0 0 0" xyz="0 0 0.1"/>
-      <geometry>
-        <box size="0.12 0.12 0.06"/>
-      </geometry>
-    </collision>
+    <gazebo>
+      <material>Gazebo/Grey</material>
+    </gazebo>
   </link>
-
-  <joint name="fixed" type="fixed">
-    <parent link="world"/>
-    <child link="base_link"/>
-    <origin xyz="0 0 0.2" rpy="0 0 0"/>
+  <joint name="base_link_joint" type="fixed">
+    <parent link="base_link"/>
+    <child link="Base"/>
+    <origin rpy="0 0 0" xyz="0 0 0"/>
   </joint>
-
   <link name="Base">
     <inertial>
       <origin rpy="0 0 0" xyz="-2.45960666746703E-07 0.0311418169687909 0.0175746661003382"/>
@@ -49,24 +18,19 @@
     <visual>
       <origin rpy="0 0 0" xyz="0 0 0"/>
       <geometry>
-        <mesh filename="file://$(find description_lerobot)/models/so_arm_100_5dof/meshes/Base.STL"/>
+        <mesh filename="package://description_lerobot/models/so_arm_100_5dof/meshes/Base.STL"/>
       </geometry>
-      <material name="brightyellow"/>
+      <material name="brightyellow">
+        <color rgba="1.0 0.9921568627450981 0.00392156862745098 1.0"/>
+      </material>
     </visual>
     <collision>
       <origin rpy="0 0 0" xyz="0 0 0"/>
       <geometry>
-        <mesh filename="file://$(find description_lerobot)/models/so_arm_100_5dof/meshes/Base.STL" scale="0.9 0.9 0.9"/>
+        <mesh filename="package://description_lerobot/models/so_arm_100_5dof/meshes/Base.STL" scale="0.9 0.9 0.9"/>
       </geometry>
     </collision>
   </link>
-
-  <joint name="base_link_joint" type="fixed">
-    <parent link="base_link"/>
-    <child link="Base"/>
-    <origin rpy="0 0 0" xyz="0 0 0.2"/>
-  </joint>
-
   <link name="Shoulder_Rotation_Pitch">
     <inertial>
       <origin rpy="0 0 0" xyz="-9.07886224712597E-05 0.0590971820568318 0.031089016892169"/>
@@ -76,27 +40,27 @@
     <visual>
       <origin rpy="0 0 0" xyz="0 0 0"/>
       <geometry>
-        <mesh filename="file://$(find description_lerobot)/models/so_arm_100_5dof/meshes/Shoulder_Rotation_Pitch.STL"/>
+        <mesh filename="package://description_lerobot/models/so_arm_100_5dof/meshes/Shoulder_Rotation_Pitch.STL"/>
       </geometry>
-      <material name="brightyellow"/>
+      <material name="brightyellow">
+        <color rgba="1.0 0.9921568627450981 0.00392156862745098 1.0"/>
+      </material>
     </visual>
     <collision>
       <origin rpy="0 0 0" xyz="0 0 0"/>
       <geometry>
-        <mesh filename="file://$(find description_lerobot)/models/so_arm_100_5dof/meshes/Shoulder_Rotation_Pitch.STL" scale="0.9 0.9 0.9"/>
+        <mesh filename="package://description_lerobot/models/so_arm_100_5dof/meshes/Shoulder_Rotation_Pitch.STL" scale="0.9 0.9 0.9"/>
       </geometry>
     </collision>
   </link>
-
   <joint name="Shoulder_Rotation" type="revolute">
     <origin rpy="1.5708 0 0" xyz="0 -0.0452 0.0165"/>
-    <parent link="base_link"/>
+    <parent link="Base"/>
     <child link="Shoulder_Rotation_Pitch"/>
     <axis xyz="0 -1 0"/>
     <limit effort="1000" lower="-1.96" upper="1.96" velocity="5.0"/>
     <dynamics damping="0.1"/>
   </joint>
-
   <link name="Upper_Arm">
     <inertial>
       <origin rpy="0 0 0" xyz="-1.7205170190925E-05 0.0701802156327694 0.00310545118155671"/>
@@ -106,27 +70,27 @@
     <visual>
       <origin rpy="0 0 0" xyz="0 0 0"/>
       <geometry>
-        <mesh filename="file://$(find description_lerobot)/models/so_arm_100_5dof/meshes/Upper_Arm.STL"/>
+        <mesh filename="package://description_lerobot/models/so_arm_100_5dof/meshes/Upper_Arm.STL"/>
       </geometry>
-      <material name="brightyellow"/>
+      <material name="brightyellow">
+        <color rgba="1.0 0.9921568627450981 0.00392156862745098 1.0"/>
+      </material>
     </visual>
     <collision>
       <origin rpy="0 0 0" xyz="0 0 0"/>
       <geometry>
-        <mesh filename="file://$(find description_lerobot)/models/so_arm_100_5dof/meshes/Upper_Arm.STL" scale="0.9 0.9 0.9"/>
+        <mesh filename="package://description_lerobot/models/so_arm_100_5dof/meshes/Upper_Arm.STL" scale="0.9 0.9 0.9"/>
       </geometry>
     </collision>
   </link>
-
   <joint name="Shoulder_Pitch" type="revolute">
     <origin rpy="0 0 0" xyz="0 0.1025 0.0306"/>
-    <parent link="base_link"/>
+    <parent link="Shoulder_Rotation_Pitch"/>
     <child link="Upper_Arm"/>
     <axis xyz="1 0 0"/>
     <limit effort="1000" lower="-1.745" upper="1.745" velocity="5.0"/>
     <dynamics damping="0.1"/>
   </joint>
-
   <link name="Lower_Arm">
     <inertial>
       <origin rpy="0 0 0" xyz="-0.00339603710186651 0.00137796353960074 0.0768006751156044"/>
@@ -136,27 +100,27 @@
     <visual>
       <origin rpy="0 0 0" xyz="0 0 0"/>
       <geometry>
-        <mesh filename="file://$(find description_lerobot)/models/so_arm_100_5dof/meshes/Lower_Arm.STL"/>
+        <mesh filename="package://description_lerobot/models/so_arm_100_5dof/meshes/Lower_Arm.STL"/>
       </geometry>
-      <material name="brightyellow"/>
+      <material name="brightyellow">
+        <color rgba="1.0 0.9921568627450981 0.00392156862745098 1.0"/>
+      </material>
     </visual>
     <collision>
       <origin rpy="0 0 0" xyz="0 0 0"/>
       <geometry>
-        <mesh filename="file://$(find description_lerobot)/models/so_arm_100_5dof/meshes/Lower_Arm.STL" scale="0.9 0.9 0.9"/>
+        <mesh filename="package://description_lerobot/models/so_arm_100_5dof/meshes/Lower_Arm.STL" scale="0.9 0.9 0.9"/>
       </geometry>
     </collision>
   </link>
-
   <joint name="Elbow" type="revolute">
     <origin rpy="0 0 0" xyz="0 0.11257 0.028"/>
-    <parent link="base_link"/>
+    <parent link="Upper_Arm"/>
     <child link="Lower_Arm"/>
     <axis xyz="1 0 0"/>
     <limit effort="1000" lower="-1.5" upper="1.5" velocity="5.0"/>
     <dynamics damping="0.1"/>
   </joint>
-
   <link name="Wrist_Pitch_Roll">
     <inertial>
       <origin rpy="0 0 0" xyz="-0.00852653127372418 -0.0352278997897927 -2.34622481569413E-05"/>
@@ -166,27 +130,27 @@
     <visual>
       <origin rpy="0 0 0" xyz="0 0 0"/>
       <geometry>
-        <mesh filename="file://$(find description_lerobot)/models/so_arm_100_5dof/meshes/Wrist_Pitch_Roll.STL"/>
+        <mesh filename="package://description_lerobot/models/so_arm_100_5dof/meshes/Wrist_Pitch_Roll.STL"/>
       </geometry>
-      <material name="brightyellow"/>
+      <material name="brightyellow">
+        <color rgba="1.0 0.9921568627450981 0.00392156862745098 1.0"/>
+      </material>
     </visual>
     <collision>
       <origin rpy="0 0 0" xyz="0 0 0"/>
       <geometry>
-        <mesh filename="file://$(find description_lerobot)/models/so_arm_100_5dof/meshes/Wrist_Pitch_Roll.STL" scale="0.9 0.9 0.9"/>
+        <mesh filename="package://description_lerobot/models/so_arm_100_5dof/meshes/Wrist_Pitch_Roll.STL" scale="0.9 0.9 0.9"/>
       </geometry>
     </collision>
   </link>
-
   <joint name="Wrist_Pitch" type="revolute">
     <origin rpy="-1.57079 0 0" xyz="0 0.0052 0.1349"/>
-    <parent link="base_link"/>
+    <parent link="Lower_Arm"/>
     <child link="Wrist_Pitch_Roll"/>
     <axis xyz="1 0 0"/>
     <limit effort="1000" lower="-1.658" upper="1.658" velocity="5.0"/>
     <dynamics damping="0.1"/>
   </joint>
-
   <link name="Fixed_Gripper">
     <inertial>
       <origin rpy="0 0 0" xyz="0.00552376906426563 -0.0280167153359021 0.000483582592841092"/>
@@ -196,27 +160,27 @@
     <visual>
       <origin rpy="0 0 0" xyz="0 0 0"/>
       <geometry>
-        <mesh filename="file://$(find description_lerobot)/models/so_arm_100_5dof/meshes/Fixed_Gripper.STL"/>
+        <mesh filename="package://description_lerobot/models/so_arm_100_5dof/meshes/Fixed_Gripper.STL"/>
       </geometry>
-      <material name="brightyellow"/>
+      <material name="brightyellow">
+        <color rgba="1.0 0.9921568627450981 0.00392156862745098 1.0"/>
+      </material>
     </visual>
     <collision>
       <origin rpy="0 0 0" xyz="0 0 0"/>
       <geometry>
-        <mesh filename="file://$(find description_lerobot)/models/so_arm_100_5dof/meshes/Fixed_Gripper.STL" scale="0.9 0.9 0.9"/>
+        <mesh filename="package://description_lerobot/models/so_arm_100_5dof/meshes/Fixed_Gripper.STL" scale="0.9 0.9 0.9"/>
       </geometry>
     </collision>
   </link>
-
   <joint name="Wrist_Roll" type="revolute">
     <origin rpy="0 1.57079 0" xyz="0 -0.0601 0"/>
-    <parent link="base_link"/>
+    <parent link="Wrist_Pitch_Roll"/>
     <child link="Fixed_Gripper"/>
     <axis xyz="0 1 0"/>
     <limit effort="1000" lower="-2.75" upper="2.75" velocity="5.0"/>
     <dynamics damping="0.1"/>
   </joint>
-
   <link name="Moving_Jaw">
     <inertial>
       <origin rpy="0 0 0" xyz="-0.00161744605468241 -0.0303472584046471 0.000449645961853651"/>
@@ -226,29 +190,45 @@
     <visual>
       <origin rpy="0 0 0" xyz="0 0 0"/>
       <geometry>
-        <mesh filename="file://$(find description_lerobot)/models/so_arm_100_5dof/meshes/Moving_Jaw.STL"/>
+        <mesh filename="package://description_lerobot/models/so_arm_100_5dof/meshes/Moving_Jaw.STL"/>
       </geometry>
-      <material name="brightyellow"/>
+      <material name="brightyellow">
+        <color rgba="1.0 0.9921568627450981 0.00392156862745098 1.0"/>
+      </material>
     </visual>
     <collision>
       <origin rpy="0 0 0" xyz="0 0 0"/>
       <geometry>
-        <mesh filename="file://$(find description_lerobot)/models/so_arm_100_5dof/meshes/Moving_Jaw.STL" scale="0.9 0.9 0.9"/>
+        <mesh filename="package://description_lerobot/models/so_arm_100_5dof/meshes/Moving_Jaw.STL" scale="0.9 0.9 0.9"/>
       </geometry>
     </collision>
   </link>
-
   <joint name="Gripper" type="revolute">
     <origin rpy="3.1416 0 3.1416" xyz="-0.0202 -0.0244 0"/>
-    <parent link="base_link"/>
+    <parent link="Fixed_Gripper"/>
     <child link="Moving_Jaw"/>
     <axis xyz="0 0 1"/>
     <limit effort="1000" lower="-0.1792" upper="1.5708" velocity="5.0"/>
     <dynamics damping="0.1"/>
   </joint>
+  <link name="End_Effector">
+    <visual>
+      <origin rpy="0 0 0" xyz="0 0 0"/>
+      <geometry>
+        <box size="0.01 0.01 0.01"/>
+      </geometry>
+      <material name="red">
+        <color rgba="1.0 0.0 0.0 1"/>
+      </material>
+    </visual>
+  </link>
+  <joint name="End_Effector_Joint" type="fixed">
+    <parent link="Fixed_Gripper"/>
+    <child link="End_Effector"/>
+    <origin rpy="0 0 0" xyz="0.0 -0.09 0.0"/>
+  </joint>
 
-
-  <link name="depth_camera_link">
+  <link name="depth_camera">
     <inertial>
       <mass value="0.01"/>
       <origin xyz="0 0 0" rpy="0 0 0"/>
@@ -267,34 +247,11 @@
     </collision>
   </link>
 
-  <joint name="depth_camera_fixed_joint" type="fixed">
+  <joint name="depth_camera" type="fixed">
     <parent link="base_link"/>
-    <child link="depth_camera_link"/>
-    <origin xyz="-0.2 -0.3 0" rpy="1.57 0 0.5"/>
+    <child link="depth_camera"/>
+    <origin xyz="0 -1 0.5" rpy="0 0.5 1.57"/>
   </joint>
-
-  <link name="End_Effector">
-    <visual>
-      <origin rpy="0 0 0" xyz="0 0 0"/>
-      <geometry>
-        <box size="0.01 0.01 0.01"/>
-      </geometry>
-      <material name="red"/>
-    </visual>
-    <collision>
-      <geometry>
-        <box size="0.01 0.01 0.01"/>
-      </geometry>
-    </collision>
-  </link>
-
-  <joint name="End_Effector_Joint" type="fixed">
-    <parent link="base_link"/>
-    <child link="End_Effector"/>
-    <origin rpy="0 0 0" xyz="0.0 -0.09 0.0"/>
-  </joint>
-
-
   <gazebo reference="base_link">
       <material>Gazebo/Yellow</material>
       <gravity>true</gravity>
@@ -323,7 +280,7 @@
   <gazebo reference="Moving_Jaw">
       <material>Gazebo/Yellow</material>
   </gazebo>
-  <gazebo reference="depth_camera_link">
+  <gazebo reference="depth_camera">
       <material>Gazebo/Yellow</material>
   </gazebo>
 
