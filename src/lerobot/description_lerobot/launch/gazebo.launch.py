@@ -21,7 +21,7 @@ def generate_launch_description():
     urdf_model_path = os.path.join(pkg_share, f'urdf/{urdf_name}')
 
     # gazebo world 路径
-    gazebo_world = os.path.join(pkg_share, 'gazebo_world', 'cabinet.world')
+    gazebo_world = os.path.join(pkg_share, 'gazebo', 'box.world')
 
     # 控制器yaml路径 moveit_config/config/ros2_controllers.yaml
     controller_config_path = PathJoinSubstitution([

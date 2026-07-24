@@ -1,0 +1,861 @@
+<sdf version='1.7'>
+  <world name='default'>
+    <light name='sun' type='directional'>
+      <cast_shadows>1</cast_shadows>
+      <pose>0 0 10 0 -0 0</pose>
+      <diffuse>0.8 0.8 0.8 1</diffuse>
+      <specular>0.2 0.2 0.2 1</specular>
+      <attenuation>
+        <range>1000</range>
+        <constant>0.9</constant>
+        <linear>0.01</linear>
+        <quadratic>0.001</quadratic>
+      </attenuation>
+      <direction>-0.5 0.1 -0.9</direction>
+      <spot>
+        <inner_angle>0</inner_angle>
+        <outer_angle>0</outer_angle>
+        <falloff>0</falloff>
+      </spot>
+    </light>
+    <model name='ground_plane'>
+      <static>1</static>
+      <link name='link'>
+        <collision name='collision'>
+          <geometry>
+            <plane>
+              <normal>0 0 1</normal>
+              <size>100 100</size>
+            </plane>
+          </geometry>
+          <surface>
+            <friction>
+              <ode>
+                <mu>100</mu>
+                <mu2>50</mu2>
+              </ode>
+              <torsional>
+                <ode/>
+              </torsional>
+            </friction>
+            <contact>
+              <ode/>
+            </contact>
+            <bounce/>
+          </surface>
+          <max_contacts>10</max_contacts>
+        </collision>
+        <visual name='visual'>
+          <cast_shadows>0</cast_shadows>
+          <geometry>
+            <plane>
+              <normal>0 0 1</normal>
+              <size>100 100</size>
+            </plane>
+          </geometry>
+          <material>
+            <script>
+              <uri>file://media/materials/scripts/gazebo.material</uri>
+              <name>Gazebo/Grey</name>
+            </script>
+          </material>
+        </visual>
+        <self_collide>0</self_collide>
+        <enable_wind>0</enable_wind>
+        <kinematic>0</kinematic>
+      </link>
+    </model>
+    <gravity>0 0 -9.8</gravity>
+    <magnetic_field>6e-06 2.3e-05 -4.2e-05</magnetic_field>
+    <atmosphere type='adiabatic'/>
+    <physics type='ode'>
+      <max_step_size>0.001</max_step_size>
+      <real_time_factor>1</real_time_factor>
+      <real_time_update_rate>1000</real_time_update_rate>
+    </physics>
+    <scene>
+      <ambient>0.4 0.4 0.4 1</ambient>
+      <background>0.7 0.7 0.7 1</background>
+      <shadows>1</shadows>
+    </scene>
+    <audio>
+      <device>default</device>
+    </audio>
+    <wind/>
+    <spherical_coordinates>
+      <surface_model>EARTH_WGS84</surface_model>
+      <latitude_deg>0</latitude_deg>
+      <longitude_deg>0</longitude_deg>
+      <elevation>0</elevation>
+      <heading_deg>0</heading_deg>
+    </spherical_coordinates>
+    <state world_name='default'>
+      <sim_time>95 591000000</sim_time>
+      <real_time>6 480730834</real_time>
+      <wall_time>1784874755 578680631</wall_time>
+      <iterations>6378</iterations>
+      <model name='ground_plane'>
+        <pose>0 0 0 0 -0 0</pose>
+        <scale>1 1 1</scale>
+        <link name='link'>
+          <pose>0 0 0 0 -0 0</pose>
+          <velocity>0 0 0 0 -0 0</velocity>
+          <acceleration>0 0 0 0 -0 0</acceleration>
+          <wrench>0 0 0 0 -0 0</wrench>
+        </link>
+      </model>
+      <model name='lerobot'>
+        <pose>0.000112 -0.003876 -3e-06 -1.7e-05 -4.9e-05 0.089597</pose>
+        <scale>1 1 1</scale>
+        <link name='Fixed_Gripper'>
+          <pose>0.026447 -0.297336 0.168936 -1.5702 1.38191 -1.48069</pose>
+          <velocity>-1.4e-05 0.004276 -0.005531 -0.033158 -0.045466 0.048583</velocity>
+          <acceleration>1.65143 1.31878 -9.93212 2.16296 0.254193 -2.95391</acceleration>
+          <wrench>0.153559 0.122628 -0.923547 0 -0 0</wrench>
+        </link>
+        <link name='Lower_Arm'>
+          <pose>0.010784 -0.122862 0.226466 2.1442 -4.9e-05 0.089516</pose>
+          <velocity>-0.015251 -0.000258 -0.003118 0.047722 -0.087648 0.059778</velocity>
+          <acceleration>-2.03223 -1.14234 -7.40167 -1.37127 0.425446 1.74525</acceleration>
+          <wrench>-0.300705 -0.169029 -1.09521 0 -0 0</wrench>
+        </link>
+        <link name='Moving_Jaw'>
+          <pose>0.028248 -0.317429 0.193358 -1.57434 -1.53942 1.66387</pose>
+          <velocity>-0.000174 0.005168 -0.004783 -0.029147 -0.045272 0.048546</velocity>
+          <acceleration>2.3111 1.58097 -9.83994 2.3721 -1.30897 0.700566</acceleration>
+          <wrench>0.046787 0.032006 -0.199204 0 -0 0</wrench>
+        </link>
+        <link name='Shoulder_Rotation_Pitch'>
+          <pose>0.004155 -0.048894 0.016498 1.57078 -5e-05 0.089522</pose>
+          <velocity>-6.8e-05 -0.001919 -0.00402 -0.015711 -0.095848 0.062977</velocity>
+          <acceleration>-1.04947 -1.06265 -1.81108 -2.72661 -0.821901 -1.24249</acceleration>
+          <wrench>-0.125124 -0.126695 -0.215928 0 -0 0</wrench>
+        </link>
+        <link name='Upper_Arm'>
+          <pose>0.006886 -0.07937 0.118998 1.71295 -5e-05 0.089518</pose>
+          <velocity>-0.00792 -0.000104 -0.003299 0.003613 -0.092287 0.060689</velocity>
+          <acceleration>-4.50613 -3.12608 -2.13041 0.877055 1.34837 -1.29595</acceleration>
+          <wrench>-0.731835 -0.507703 -0.345998 0 -0 0</wrench>
+        </link>
+        <link name='Wrist_Pitch_Roll'>
+          <pose>0.02117 -0.238542 0.157651 -0.188887 -5e-05 0.089515</pose>
+          <velocity>-0.002394 0.003651 -0.007726 -0.028835 -0.094591 0.059218</velocity>
+          <acceleration>0.765424 0.970355 -10.7045 -0.441679 0.245488 -2.18847</acceleration>
+          <wrench>0.050619 0.064172 -0.707909 0 -0 0</wrench>
+        </link>
+        <link name='base_link'>
+          <pose>0.000112 -0.003876 -3e-06 -1.7e-05 -4.9e-05 0.089597</pose>
+          <velocity>-0.000899 -0.002462 -0.005097 -0.015709 -0.094543 0.047122</velocity>
+          <acceleration>-1.35271 -1.02839 -1.57774 -1.75757 -0.902542 0.197127</acceleration>
+          <wrench>-0.274849 -0.208952 -0.320571 0 -0 0</wrench>
+        </link>
+      </model>
+      <model name='unit_box'>
+        <pose>0.085575 -0.350633 0.490594 1e-06 -2e-06 -1.1e-05</pose>
+        <scale>1 1 1</scale>
+        <link name='link'>
+          <pose>0.085576 -0.350633 0.025 1e-06 -2e-06 -1.1e-05</pose>
+          <velocity>0 0 0 0 -0 0</velocity>
+          <acceleration>0 0 0 0 -0 0</acceleration>
+          <wrench>0 0 0 0 -0 0</wrench>
+        </link>
+      </model>
+      <light name='sun'>
+        <pose>0 0 10 0 -0 0</pose>
+      </light>
+    </state>
+    <gui fullscreen='0'>
+      <camera name='user_camera'>
+        <pose>0.218678 -0.917743 0.397256 0 0.55581 1.95875</pose>
+        <view_controller>orbit</view_controller>
+        <projection_type>perspective</projection_type>
+      </camera>
+    </gui>
+    <model name='lerobot'>
+      <link name='base_link'>
+        <inertial>
+          <pose>-0 -0.019607 0.041318 0 -0 0</pose>
+          <mass>0.203184</mass>
+          <inertia>
+            <ixx>0.0124601</ixx>
+            <ixy>2.3425e-08</ixy>
+            <ixz>3.1127e-09</ixz>
+            <iyy>0.00238289</iyy>
+            <iyz>0.00475231</iyz>
+            <izz>0.0102553</izz>
+          </inertia>
+        </inertial>
+        <collision name='base_link_fixed_joint_lump__Base_collision'>
+          <pose>0 0 0 0 -0 0</pose>
+          <geometry>
+            <mesh>
+              <scale>0.9 0.9 0.9</scale>
+              <uri>file:///home/cyd/vla_ws/install/description_lerobot/share/description_lerobot/models/so_arm_100_5dof/meshes/Base.STL</uri>
+            </mesh>
+          </geometry>
+          <surface>
+            <contact>
+              <ode/>
+            </contact>
+            <friction>
+              <ode/>
+              <torsional>
+                <ode/>
+              </torsional>
+            </friction>
+            <bounce/>
+          </surface>
+          <max_contacts>10</max_contacts>
+        </collision>
+        <collision name='base_link_fixed_joint_lump__depth_camera_collision_1'>
+          <pose>0 -1 0.5 0 0.5 1.57</pose>
+          <geometry>
+            <box>
+              <size>0.02 0.1 0.02</size>
+            </box>
+          </geometry>
+          <surface>
+            <contact>
+              <ode/>
+            </contact>
+            <friction>
+              <ode/>
+              <torsional>
+                <ode/>
+              </torsional>
+            </friction>
+            <bounce/>
+          </surface>
+          <max_contacts>10</max_contacts>
+        </collision>
+        <visual name='base_link_fixed_joint_lump__Base_visual'>
+          <pose>0 0 0 0 -0 0</pose>
+          <geometry>
+            <mesh>
+              <scale>1 1 1</scale>
+              <uri>file:///home/cyd/vla_ws/install/description_lerobot/share/description_lerobot/models/so_arm_100_5dof/meshes/Base.STL</uri>
+            </mesh>
+          </geometry>
+          <material>
+            <script>
+              <name>Gazebo/Yellow</name>
+              <uri>file://media/materials/scripts/gazebo.material</uri>
+            </script>
+          </material>
+        </visual>
+        <visual name='base_link_fixed_joint_lump__depth_camera_visual_1'>
+          <pose>0 -1 0.5 0 0.5 1.57</pose>
+          <geometry>
+            <box>
+              <size>0.02 0.1 0.02</size>
+            </box>
+          </geometry>
+          <material>
+            <script>
+              <name>Gazebo/Yellow</name>
+              <uri>file://media/materials/scripts/gazebo.material</uri>
+            </script>
+          </material>
+        </visual>
+        <gravity>1</gravity>
+        <self_collide>0</self_collide>
+        <sensor name='camera_sensor' type='depth'>
+          <plugin name='depth_camera' filename='libgazebo_ros_camera.so'>
+            <frame_name>camera_optical_link</frame_name>
+          </plugin>
+          <always_on>1</always_on>
+          <update_rate>10</update_rate>
+          <camera name='camera'>
+            <horizontal_fov>1.50098</horizontal_fov>
+            <image>
+              <width>1920</width>
+              <height>1080</height>
+              <format>R8G8B8</format>
+            </image>
+            <distortion>
+              <k1>0</k1>
+              <k2>0</k2>
+              <k3>0</k3>
+              <p1>0</p1>
+              <p2>0</p2>
+              <center>0.5 0.5</center>
+            </distortion>
+            <clip>
+              <near>0.1</near>
+              <far>100</far>
+            </clip>
+          </camera>
+          <pose>0 -1 0.5 0 0.5 1.57</pose>
+        </sensor>
+        <enable_wind>0</enable_wind>
+        <kinematic>0</kinematic>
+      </link>
+      <joint name='Shoulder_Rotation' type='revolute'>
+        <pose relative_to='base_link'>0 -0.0452 0.0165 1.5708 -0 0</pose>
+        <parent>base_link</parent>
+        <child>Shoulder_Rotation_Pitch</child>
+        <axis>
+          <xyz>0 -1 0</xyz>
+          <limit>
+            <lower>-1.96</lower>
+            <upper>1.96</upper>
+            <effort>1000</effort>
+            <velocity>5</velocity>
+          </limit>
+          <dynamics>
+            <damping>0.1</damping>
+            <friction>0</friction>
+            <spring_reference>0</spring_reference>
+            <spring_stiffness>0</spring_stiffness>
+          </dynamics>
+        </axis>
+      </joint>
+      <link name='Shoulder_Rotation_Pitch'>
+        <pose relative_to='Shoulder_Rotation'>0 0 0 0 -0 0</pose>
+        <inertial>
+          <pose>-9.1e-05 0.059097 0.031089 0 -0 0</pose>
+          <mass>0.119226</mass>
+          <inertia>
+            <ixx>5.90409e-05</ixx>
+            <ixy>4.90801e-07</ixy>
+            <ixz>-5.90452e-08</ixz>
+            <iyy>3.21499e-05</iyy>
+            <iyz>-4.58026e-06</iyz>
+            <izz>5.86059e-05</izz>
+          </inertia>
+        </inertial>
+        <collision name='Shoulder_Rotation_Pitch_collision'>
+          <pose>0 0 0 0 -0 0</pose>
+          <geometry>
+            <mesh>
+              <scale>0.9 0.9 0.9</scale>
+              <uri>file:///home/cyd/vla_ws/install/description_lerobot/share/description_lerobot/models/so_arm_100_5dof/meshes/Shoulder_Rotation_Pitch.STL</uri>
+            </mesh>
+          </geometry>
+          <surface>
+            <contact>
+              <ode/>
+            </contact>
+            <friction>
+              <ode/>
+              <torsional>
+                <ode/>
+              </torsional>
+            </friction>
+            <bounce/>
+          </surface>
+          <max_contacts>10</max_contacts>
+        </collision>
+        <visual name='Shoulder_Rotation_Pitch_visual'>
+          <pose>0 0 0 0 -0 0</pose>
+          <geometry>
+            <mesh>
+              <scale>1 1 1</scale>
+              <uri>file:///home/cyd/vla_ws/install/description_lerobot/share/description_lerobot/models/so_arm_100_5dof/meshes/Shoulder_Rotation_Pitch.STL</uri>
+            </mesh>
+          </geometry>
+          <material>
+            <script>
+              <name>Gazebo/Yellow</name>
+              <uri>file://media/materials/scripts/gazebo.material</uri>
+            </script>
+          </material>
+        </visual>
+        <self_collide>0</self_collide>
+        <enable_wind>0</enable_wind>
+        <kinematic>0</kinematic>
+      </link>
+      <joint name='Shoulder_Pitch' type='revolute'>
+        <pose relative_to='Shoulder_Rotation_Pitch'>0 0.1025 0.0306 0 -0 0</pose>
+        <parent>Shoulder_Rotation_Pitch</parent>
+        <child>Upper_Arm</child>
+        <axis>
+          <xyz>1 0 0</xyz>
+          <limit>
+            <lower>-1.745</lower>
+            <upper>1.745</upper>
+            <effort>1000</effort>
+            <velocity>5</velocity>
+          </limit>
+          <dynamics>
+            <damping>0.1</damping>
+            <friction>0</friction>
+            <spring_reference>0</spring_reference>
+            <spring_stiffness>0</spring_stiffness>
+          </dynamics>
+        </axis>
+      </joint>
+      <link name='Upper_Arm'>
+        <pose relative_to='Shoulder_Pitch'>0 0 0 0 -0 0</pose>
+        <inertial>
+          <pose>-1.7e-05 0.07018 0.003105 0 -0 0</pose>
+          <mass>0.162409</mass>
+          <inertia>
+            <ixx>0.000167153</ixx>
+            <ixy>1.03903e-06</ixy>
+            <ixz>-1.20162e-08</ixz>
+            <iyy>7.01947e-05</iyy>
+            <iyz>2.11885e-06</iyz>
+            <izz>0.00021328</izz>
+          </inertia>
+        </inertial>
+        <collision name='Upper_Arm_collision'>
+          <pose>0 0 0 0 -0 0</pose>
+          <geometry>
+            <mesh>
+              <scale>0.9 0.9 0.9</scale>
+              <uri>file:///home/cyd/vla_ws/install/description_lerobot/share/description_lerobot/models/so_arm_100_5dof/meshes/Upper_Arm.STL</uri>
+            </mesh>
+          </geometry>
+          <surface>
+            <contact>
+              <ode/>
+            </contact>
+            <friction>
+              <ode/>
+              <torsional>
+                <ode/>
+              </torsional>
+            </friction>
+            <bounce/>
+          </surface>
+          <max_contacts>10</max_contacts>
+        </collision>
+        <visual name='Upper_Arm_visual'>
+          <pose>0 0 0 0 -0 0</pose>
+          <geometry>
+            <mesh>
+              <scale>1 1 1</scale>
+              <uri>file:///home/cyd/vla_ws/install/description_lerobot/share/description_lerobot/models/so_arm_100_5dof/meshes/Upper_Arm.STL</uri>
+            </mesh>
+          </geometry>
+          <material>
+            <script>
+              <name>Gazebo/Yellow</name>
+              <uri>file://media/materials/scripts/gazebo.material</uri>
+            </script>
+          </material>
+        </visual>
+        <self_collide>0</self_collide>
+        <enable_wind>0</enable_wind>
+        <kinematic>0</kinematic>
+      </link>
+      <joint name='Elbow' type='revolute'>
+        <pose relative_to='Upper_Arm'>0 0.11257 0.028 0 -0 0</pose>
+        <parent>Upper_Arm</parent>
+        <child>Lower_Arm</child>
+        <axis>
+          <xyz>1 0 0</xyz>
+          <limit>
+            <lower>-1.5</lower>
+            <upper>1.5</upper>
+            <effort>1000</effort>
+            <velocity>5</velocity>
+          </limit>
+          <dynamics>
+            <damping>0.1</damping>
+            <friction>0</friction>
+            <spring_reference>0</spring_reference>
+            <spring_stiffness>0</spring_stiffness>
+          </dynamics>
+        </axis>
+      </joint>
+      <link name='Lower_Arm'>
+        <pose relative_to='Elbow'>0 0 0 0 -0 0</pose>
+        <inertial>
+          <pose>-0.003396 0.001378 0.076801 0 -0 0</pose>
+          <mass>0.147968</mass>
+          <inertia>
+            <ixx>0.000105334</ixx>
+            <ixy>1.73059e-07</ixy>
+            <ixz>-1.17203e-05</ixz>
+            <iyy>0.000138767</iyy>
+            <iyz>1.7743e-06</iyz>
+            <izz>5.08742e-05</izz>
+          </inertia>
+        </inertial>
+        <collision name='Lower_Arm_collision'>
+          <pose>0 0 0 0 -0 0</pose>
+          <geometry>
+            <mesh>
+              <scale>0.9 0.9 0.9</scale>
+              <uri>file:///home/cyd/vla_ws/install/description_lerobot/share/description_lerobot/models/so_arm_100_5dof/meshes/Lower_Arm.STL</uri>
+            </mesh>
+          </geometry>
+          <surface>
+            <contact>
+              <ode/>
+            </contact>
+            <friction>
+              <ode/>
+              <torsional>
+                <ode/>
+              </torsional>
+            </friction>
+            <bounce/>
+          </surface>
+          <max_contacts>10</max_contacts>
+        </collision>
+        <visual name='Lower_Arm_visual'>
+          <pose>0 0 0 0 -0 0</pose>
+          <geometry>
+            <mesh>
+              <scale>1 1 1</scale>
+              <uri>file:///home/cyd/vla_ws/install/description_lerobot/share/description_lerobot/models/so_arm_100_5dof/meshes/Lower_Arm.STL</uri>
+            </mesh>
+          </geometry>
+          <material>
+            <script>
+              <name>Gazebo/Yellow</name>
+              <uri>file://media/materials/scripts/gazebo.material</uri>
+            </script>
+          </material>
+        </visual>
+        <self_collide>0</self_collide>
+        <enable_wind>0</enable_wind>
+        <kinematic>0</kinematic>
+      </link>
+      <joint name='Wrist_Pitch' type='revolute'>
+        <pose relative_to='Lower_Arm'>0 0.0052 0.1349 -1.57079 0 0</pose>
+        <parent>Lower_Arm</parent>
+        <child>Wrist_Pitch_Roll</child>
+        <axis>
+          <xyz>1 0 0</xyz>
+          <limit>
+            <lower>-1.658</lower>
+            <upper>1.658</upper>
+            <effort>1000</effort>
+            <velocity>5</velocity>
+          </limit>
+          <dynamics>
+            <damping>0.1</damping>
+            <friction>0</friction>
+            <spring_reference>0</spring_reference>
+            <spring_stiffness>0</spring_stiffness>
+          </dynamics>
+        </axis>
+      </joint>
+      <link name='Wrist_Pitch_Roll'>
+        <pose relative_to='Wrist_Pitch'>0 0 0 0 -0 0</pose>
+        <inertial>
+          <pose>-0.008527 -0.035228 -2.3e-05 0 -0 0</pose>
+          <mass>0.0661321</mass>
+          <inertia>
+            <ixx>1.95717e-05</ixx>
+            <ixy>-6.62714e-07</ixy>
+            <ixz>5.20089e-09</ixz>
+            <iyy>2.38028e-05</iyy>
+            <iyz>4.09549e-08</iyz>
+            <izz>3.45401e-05</izz>
+          </inertia>
+        </inertial>
+        <collision name='Wrist_Pitch_Roll_collision'>
+          <pose>0 0 0 0 -0 0</pose>
+          <geometry>
+            <mesh>
+              <scale>0.9 0.9 0.9</scale>
+              <uri>file:///home/cyd/vla_ws/install/description_lerobot/share/description_lerobot/models/so_arm_100_5dof/meshes/Wrist_Pitch_Roll.STL</uri>
+            </mesh>
+          </geometry>
+          <surface>
+            <contact>
+              <ode/>
+            </contact>
+            <friction>
+              <ode/>
+              <torsional>
+                <ode/>
+              </torsional>
+            </friction>
+            <bounce/>
+          </surface>
+          <max_contacts>10</max_contacts>
+        </collision>
+        <visual name='Wrist_Pitch_Roll_visual'>
+          <pose>0 0 0 0 -0 0</pose>
+          <geometry>
+            <mesh>
+              <scale>1 1 1</scale>
+              <uri>file:///home/cyd/vla_ws/install/description_lerobot/share/description_lerobot/models/so_arm_100_5dof/meshes/Wrist_Pitch_Roll.STL</uri>
+            </mesh>
+          </geometry>
+          <material>
+            <script>
+              <name>Gazebo/Yellow</name>
+              <uri>file://media/materials/scripts/gazebo.material</uri>
+            </script>
+          </material>
+        </visual>
+        <self_collide>0</self_collide>
+        <enable_wind>0</enable_wind>
+        <kinematic>0</kinematic>
+      </link>
+      <joint name='Wrist_Roll' type='revolute'>
+        <pose relative_to='Wrist_Pitch_Roll'>0 -0.0601 0 0 1.57079 0</pose>
+        <parent>Wrist_Pitch_Roll</parent>
+        <child>Fixed_Gripper</child>
+        <axis>
+          <xyz>0 1 0</xyz>
+          <limit>
+            <lower>-2.75</lower>
+            <upper>2.75</upper>
+            <effort>1000</effort>
+            <velocity>5</velocity>
+          </limit>
+          <dynamics>
+            <damping>0.1</damping>
+            <friction>0</friction>
+            <spring_reference>0</spring_reference>
+            <spring_stiffness>0</spring_stiffness>
+          </dynamics>
+        </axis>
+      </joint>
+      <link name='Fixed_Gripper'>
+        <pose relative_to='Wrist_Roll'>0 0 0 0 -0 0</pose>
+        <inertial>
+          <pose>0.005524 -0.028017 0.000484 0 -0 0</pose>
+          <mass>0.0929859</mass>
+          <inertia>
+            <ixx>4.33282e-05</ixx>
+            <ixy>7.09654e-06</ixy>
+            <ixz>5.99839e-07</ixz>
+            <iyy>3.04452e-05</iyy>
+            <iyz>-1.58743e-07</iyz>
+            <izz>5.02461e-05</izz>
+          </inertia>
+        </inertial>
+        <collision name='Fixed_Gripper_collision'>
+          <pose>0 0 0 0 -0 0</pose>
+          <geometry>
+            <mesh>
+              <scale>0.9 0.9 0.9</scale>
+              <uri>file:///home/cyd/vla_ws/install/description_lerobot/share/description_lerobot/models/so_arm_100_5dof/meshes/Fixed_Gripper.STL</uri>
+            </mesh>
+          </geometry>
+          <surface>
+            <contact>
+              <ode/>
+            </contact>
+            <friction>
+              <ode/>
+              <torsional>
+                <ode/>
+              </torsional>
+            </friction>
+            <bounce/>
+          </surface>
+          <max_contacts>10</max_contacts>
+        </collision>
+        <visual name='Fixed_Gripper_visual'>
+          <pose>0 0 0 0 -0 0</pose>
+          <geometry>
+            <mesh>
+              <scale>1 1 1</scale>
+              <uri>file:///home/cyd/vla_ws/install/description_lerobot/share/description_lerobot/models/so_arm_100_5dof/meshes/Fixed_Gripper.STL</uri>
+            </mesh>
+          </geometry>
+          <material>
+            <script>
+              <name>Gazebo/Yellow</name>
+              <uri>file://media/materials/scripts/gazebo.material</uri>
+            </script>
+          </material>
+        </visual>
+        <visual name='Fixed_Gripper_fixed_joint_lump__End_Effector_visual_1'>
+          <pose>0 -0.09 0 0 -0 0</pose>
+          <geometry>
+            <box>
+              <size>0.01 0.01 0.01</size>
+            </box>
+          </geometry>
+        </visual>
+        <self_collide>0</self_collide>
+        <enable_wind>0</enable_wind>
+        <kinematic>0</kinematic>
+      </link>
+      <joint name='Gripper' type='revolute'>
+        <pose relative_to='Fixed_Gripper'>-0.0202 -0.0244 0 -3.14159 -0 -3.14159</pose>
+        <parent>Fixed_Gripper</parent>
+        <child>Moving_Jaw</child>
+        <axis>
+          <xyz>0 0 1</xyz>
+          <limit>
+            <lower>-0.1792</lower>
+            <upper>1.5708</upper>
+            <effort>1000</effort>
+            <velocity>5</velocity>
+          </limit>
+          <dynamics>
+            <damping>0.1</damping>
+            <friction>0</friction>
+            <spring_reference>0</spring_reference>
+            <spring_stiffness>0</spring_stiffness>
+          </dynamics>
+        </axis>
+      </joint>
+      <link name='Moving_Jaw'>
+        <pose relative_to='Gripper'>0 0 0 0 -0 0</pose>
+        <inertial>
+          <pose>-0.001617 -0.030347 0.00045 0 -0 0</pose>
+          <mass>0.0202444</mass>
+          <inertia>
+            <ixx>1.10911e-05</ixx>
+            <ixy>-5.35077e-07</ixy>
+            <ixz>-9.46106e-09</ixz>
+            <iyy>3.03576e-06</iyy>
+            <iyz>-1.71146e-07</iyz>
+            <izz>8.99161e-06</izz>
+          </inertia>
+        </inertial>
+        <collision name='Moving_Jaw_collision'>
+          <pose>0 0 0 0 -0 0</pose>
+          <geometry>
+            <mesh>
+              <scale>0.9 0.9 0.9</scale>
+              <uri>file:///home/cyd/vla_ws/install/description_lerobot/share/description_lerobot/models/so_arm_100_5dof/meshes/Moving_Jaw.STL</uri>
+            </mesh>
+          </geometry>
+          <surface>
+            <contact>
+              <ode/>
+            </contact>
+            <friction>
+              <ode/>
+              <torsional>
+                <ode/>
+              </torsional>
+            </friction>
+            <bounce/>
+          </surface>
+          <max_contacts>10</max_contacts>
+        </collision>
+        <visual name='Moving_Jaw_visual'>
+          <pose>0 0 0 0 -0 0</pose>
+          <geometry>
+            <mesh>
+              <scale>1 1 1</scale>
+              <uri>file:///home/cyd/vla_ws/install/description_lerobot/share/description_lerobot/models/so_arm_100_5dof/meshes/Moving_Jaw.STL</uri>
+            </mesh>
+          </geometry>
+          <material>
+            <script>
+              <name>Gazebo/Yellow</name>
+              <uri>file://media/materials/scripts/gazebo.material</uri>
+            </script>
+          </material>
+        </visual>
+        <self_collide>0</self_collide>
+        <enable_wind>0</enable_wind>
+        <kinematic>0</kinematic>
+      </link>
+      <static>0</static>
+      <plugin name='gazebo_ros2_control' filename='libgazebo_ros2_control.so'>
+        <parameters>/home/cyd/vla_ws/install/moveit_config/share/moveit_config/config/ros2_controllers.yaml</parameters>
+        <robot_param_node>robot_state_publisher</robot_param_node>
+      </plugin>
+      <pose>0 0 0 0 -0 0</pose>
+    </model>
+    <model name='unit_box'>
+      <link name='link'>
+        <inertial>
+          <mass>0.1</mass>
+          <inertia>
+            <ixx>0.0166667</ixx>
+            <ixy>0</ixy>
+            <ixz>0</ixz>
+            <iyy>0.0166667</iyy>
+            <iyz>0</iyz>
+            <izz>0.0166667</izz>
+          </inertia>
+          <pose>0 0 0 0 -0 0</pose>
+        </inertial>
+        <self_collide>0</self_collide>
+        <enable_wind>0</enable_wind>
+        <kinematic>0</kinematic>
+        <pose>-0 0 -0.465594 0 -0 0</pose>
+        <gravity>1</gravity>
+        <visual name='visual'>
+          <geometry>
+            <box>
+              <size>0.02 0.02 0.02</size>
+            </box>
+          </geometry>
+          <material>
+            <script>
+              <name>Gazebo/Grey</name>
+              <uri>file://media/materials/scripts/gazebo.material</uri>
+            </script>
+            <shader type='pixel'>
+              <normal_map>__default__</normal_map>
+            </shader>
+            <ambient>0 1 0 1</ambient>
+            <diffuse>0 1 0 1</diffuse>
+            <specular>0 1 0 1</specular>
+            <emissive>0 1 0 1</emissive>
+          </material>
+          <pose>0 0 0 0 -0 0</pose>
+          <transparency>0</transparency>
+          <cast_shadows>1</cast_shadows>
+        </visual>
+        <collision name='collision'>
+          <laser_retro>0</laser_retro>
+          <max_contacts>10</max_contacts>
+          <pose>0 0 0 0 -0 0</pose>
+          <geometry>
+            <box>
+              <size>0.02 0.02 0.02</size>
+            </box>
+          </geometry>
+          <surface>
+            <friction>
+              <ode>
+                <mu>1</mu>
+                <mu2>1</mu2>
+                <fdir1>0 0 0</fdir1>
+                <slip1>0</slip1>
+                <slip2>0</slip2>
+              </ode>
+              <torsional>
+                <coefficient>1</coefficient>
+                <patch_radius>0</patch_radius>
+                <surface_radius>0</surface_radius>
+                <use_patch_radius>1</use_patch_radius>
+                <ode>
+                  <slip>0</slip>
+                </ode>
+              </torsional>
+            </friction>
+            <bounce>
+              <restitution_coefficient>0</restitution_coefficient>
+              <threshold>1e+06</threshold>
+            </bounce>
+            <contact>
+              <collide_without_contact>0</collide_without_contact>
+              <collide_without_contact_bitmask>1</collide_without_contact_bitmask>
+              <collide_bitmask>1</collide_bitmask>
+              <ode>
+                <soft_cfm>0</soft_cfm>
+                <soft_erp>0.2</soft_erp>
+                <kp>1e+13</kp>
+                <kd>1</kd>
+                <max_vel>0.01</max_vel>
+                <min_depth>0</min_depth>
+              </ode>
+              <bullet>
+                <split_impulse>1</split_impulse>
+                <split_impulse_penetration_threshold>-0.01</split_impulse_penetration_threshold>
+                <soft_cfm>0</soft_cfm>
+                <soft_erp>0.2</soft_erp>
+                <kp>1e+13</kp>
+                <kd>1</kd>
+              </bullet>
+            </contact>
+          </surface>
+        </collision>
+      </link>
+      <static>0</static>
+      <allow_auto_disable>1</allow_auto_disable>
+      <pose>-0.047847 -0.382032 0.475602 -2.8e-05 -0.00077 -1.4e-05</pose>
+    </model>
+  </world>
+</sdf>
